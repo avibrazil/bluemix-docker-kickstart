@@ -13,5 +13,5 @@ declared-services:
   # declared-services block is ignored by pure Cloud Foundry, it is used by Bluemix
   # DevOps Services to automatically provision things.
   bridge-app-database:
-    label: cleardb-mysql-database
+    label: cleardb
     plan: spark
