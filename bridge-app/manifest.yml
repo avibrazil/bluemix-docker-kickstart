@@ -6,7 +6,7 @@ applications:
   no-route: true
   domain: mybluemix.net
   disk-quota: 1M
-  memory: 1M
+  memory: 0.01G
   services:
   - bridge-app-database
 declared-services:
