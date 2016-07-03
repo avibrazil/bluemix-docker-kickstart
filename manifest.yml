@@ -1,5 +1,5 @@
 applications:
-- path: .
+- path: bridge-app
   name: the bridge app
   host: the-bridge-app-host-name
   no-hostname: true
