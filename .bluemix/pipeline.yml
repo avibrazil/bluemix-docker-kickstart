@@ -10,9 +10,10 @@ stages:
   - name: Deploy CF bridge app
     type: deployer
     target:
-      region_id: ibm:yp:us-south
-      organization: Default Bluemix
-      space: dev
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+    SETUP_SERVICE_SPACE: 'true'
     script: |-
       #!/bin/sh
       cf push
@@ -26,9 +27,10 @@ stages:
   - name: Build phpinfo container
     type: builder
     target:
-      region_id: ibm:yp:us-south
-      organization: Default Bluemix
-      space: dev
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+    SETUP_SERVICE_SPACE: 'true'
     extension_id: ibm.devops.services.pipeline.container.builder
     IMAGE_NAME: systemd
     USE_CACHED_LAYERS: 'true'
@@ -108,9 +110,10 @@ stages:
   - name: Deploy phpinfo container
     type: deployer
     target:
-      region_id: ibm:yp:us-south
-      organization: Default Bluemix
-      space: dev
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+    SETUP_SERVICE_SPACE: 'true'
     extension_id: ibm.devops.services.pipeline.docker.deploy.ice
     PORT: 80,22
     CONTAINER_NAME: systemd
