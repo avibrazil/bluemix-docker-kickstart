@@ -1,5 +1,5 @@
 applications:
-- name: A bridge app with Bluemix components to support a containerized solution
+- name: the bridge app
   host: the-bridge-app-host-name
   no-hostname: true
   no-route: true
