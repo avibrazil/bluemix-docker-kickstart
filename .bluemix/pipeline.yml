@@ -116,7 +116,7 @@ stages:
     SETUP_SERVICE_SPACE: 'true'
     extension_id: ibm.devops.services.pipeline.docker.deploy.ice
     PORT: 80,22
-    CONTAINER_NAME: systemd
+    CONTAINER_NAME: phpinfo
     DEPLOY_TYPE: red_black
     COMMAND: |
         #!/bin/bash
