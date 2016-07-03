@@ -32,7 +32,7 @@ stages:
       space: ${CF_SPACE}
     SETUP_SERVICE_SPACE: 'true'
     extension_id: ibm.devops.services.pipeline.container.builder
-    IMAGE_NAME: systemd
+    IMAGE_NAME: phpinfo
     USE_CACHED_LAYERS: 'true'
     COMMAND: |
         #!/bin/bash
@@ -104,7 +104,7 @@ stages:
     value: ${CF_APP}
     type: text
   - name: ROUTE_HOSTNAME
-    value: ${CF_APP}-systemd
+    value: ${CF_APP}-phpinfo
     type: text
   jobs:
   - name: Deploy phpinfo container

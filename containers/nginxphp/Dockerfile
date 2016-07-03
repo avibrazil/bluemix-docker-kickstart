@@ -1,8 +1,9 @@
-FROM centos6
+FROM centos
 MAINTAINER Avi Alkalay <avi at unix.sh>
 
 
-RUN yum -y install php httpd;\
+RUN yum -y install epel-release;\
+	yum -y install nginx;\
 	yum clean all
 
 
@@ -12,4 +13,4 @@ COPY index.php /var/www/html/
 EXPOSE 80
 
 # This container is a web server serving PHP apps, so a plain Apache is our entry point
-ENTRYPOINT [ "/usr/sbin/httpd", "-DFOREGROUND" ]
+ENTRYPOINT [ "/usr/sbin/nginx" ]
