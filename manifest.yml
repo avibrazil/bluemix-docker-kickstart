@@ -1,12 +1,13 @@
 applications:
 - path: bridge-app
-  name: the bridge app
+  buildpack: noop-buildpack
+  name: A bridge app with Bluemix components to support a solution with containers
   host: the-bridge-app-host-name
   no-hostname: true
   no-route: true
   domain: mybluemix.net
-  disk-quota: 1M
-  memory: 64M
+  disk-quota: 128K
+  memory: 1M
   services:
   - bridge-app-database
 declared-services:
