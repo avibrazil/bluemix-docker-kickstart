@@ -25,6 +25,10 @@ stages:
   jobs:
   - name: Build phpinfo container
     type: builder
+    target:
+      region_id: ibm:yp:us-south
+      organization: Default Bluemix
+      space: dev
     extension_id: ibm.devops.services.pipeline.container.builder
     IMAGE_NAME: systemd
     USE_CACHED_LAYERS: 'true'
