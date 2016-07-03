@@ -1,30 +1,36 @@
+---
 stages:
 - name: Deploy CF bridge app
-  jobs:
-  - name: Deploy CF bridge app
-    type: deployer
-    target:
-      region_id: ibm:yp:us-south
-      organization: Default Bluemix
-      space: dev
-    script: |-
-      #!/bin/bash
-      cf push
-- name: Build Containers
   inputs:
   - type: git
     branch: master
   triggers:
   - type: commit
   jobs:
+  - name: Deploy CF bridge app
+    type: deployer
+    target:
+      region_id: ibm:yp:us-south
+      organization: ${CF_ORG}
+      space: ${CF_SPACE}
+    script: |-
+      #!/bin/sh
+      cf push
+- name: Build Containers from Dockerfiles
+  inputs:
+  - type: git
+    branch: master
+  triggers:
+  - type: stage
+  jobs:
   - name: Build phpinfo container
     type: builder
     extension_id: ibm.devops.services.pipeline.container.builder
     target:
-      url: https://api.ng.bluemix.net
-      organization: Default Bluemix
-      space: dev
-    IMAGE_NAME: phpinfo
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORG}
+      space: ${CF_SPACE}
+    IMAGE_NAME: systemd
     USE_CACHED_LAYERS: 'true'
     COMMAND: |
         #!/bin/bash
@@ -95,17 +101,20 @@ stages:
   - name: BIND_TO
     value: ${CF_APP}
     type: text
+  - name: ROUTE_HOSTNAME
+    value: ${CF_APP}-systemd
+    type: text
   jobs:
   - name: Deploy phpinfo container
     type: deployer
     extension_id: ibm.devops.services.pipeline.docker.deploy.ice
     target:
-      url: https://api.ng.bluemix.net
-      organization: Default Bluemix
-      space: dev
-    PORT: '80'
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORG}
+      space: ${CF_SPACE}
+    PORT: 80,22
+    CONTAINER_NAME: systemd
     DEPLOY_TYPE: red_black
-    CONTAINER_NAME: phpinfo
     COMMAND: |
         #!/bin/bash
         # The following are some example deployment scripts.  Use these as is or fork them and include your updates here:
