@@ -1,4 +1,3 @@
----
 applications:
 - name: A bridge app with Bluemix components to support a containerized solution
   host: the-bridge-app-host-name
