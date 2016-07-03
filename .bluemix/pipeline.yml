@@ -9,6 +9,10 @@ stages:
   jobs:
   - name: Deploy CF bridge app
     type: deployer
+    target:
+      region_id: ibm:yp:us-south
+      organization: Default Bluemix
+      space: dev
     script: |-
       #!/bin/sh
       cf push
@@ -99,6 +103,10 @@ stages:
   jobs:
   - name: Deploy phpinfo container
     type: deployer
+    target:
+      region_id: ibm:yp:us-south
+      organization: Default Bluemix
+      space: dev
     extension_id: ibm.devops.services.pipeline.docker.deploy.ice
     PORT: 80,22
     CONTAINER_NAME: systemd
