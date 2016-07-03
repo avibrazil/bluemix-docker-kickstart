@@ -26,10 +26,10 @@ stages:
       space: dev
     script: |-
       #!/bin/bash
-      cf push "${CF_APP}"
+      cf push
 
       # View logs
-      #cf logs "${CF_APP}" --recent
+      #cf logs --recent
 - name: Build Containers
   inputs:
   - type: git
@@ -88,7 +88,7 @@ stages:
   - type: stage
   properties:
   - name: BIND_TO
-    value: ${CF_APP}
+    value: bluemix-docker-kickstart-avibrazil-034
     type: text
   jobs:
   - name: Deploy phpinfo container
@@ -99,8 +99,8 @@ stages:
       organization: Default Bluemix
       space: dev
     PORT: '80'
-    CONTAINER_NAME: phpinfo
     DEPLOY_TYPE: red_black
+    CONTAINER_NAME: phpinfo
     COMMAND: "#!/bin/bash\n# The following are some example deployment scripts.  Use\
       \ these as is or fork them and include your updates here:\necho -e \"${label_color}Starting\
       \ deployment script${no_color}\"\n\n\n# To view/fork this script goto: https://github.com/Osthanes/deployscripts\n\
