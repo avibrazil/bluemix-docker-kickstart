@@ -93,7 +93,7 @@ stages:
 - name: Deploy Containers
   inputs:
   - type: job
-    stage: Build Containers
+    stage: Build Containers from Dockerfiles
     job: Build phpinfo container
   triggers:
   - type: stage
