@@ -1,4 +1,4 @@
-FROM centos6
+FROM centos:6
 MAINTAINER Avi Alkalay <avi at unix.sh>
 
 
