@@ -106,9 +106,6 @@ stages:
   - name: BIND_TO
     value: ${CF_APP}
     type: text
-  - name: ROUTE_HOSTNAME
-    value: ${CF_APP}-phpinfo
-    type: text
   jobs:
   - name: Deploy phpinfo container
     type: deployer
