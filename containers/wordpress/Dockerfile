@@ -1,6 +1,7 @@
 FROM centos:6
 MAINTAINER Avi Alkalay <avi at unix.sh>
 
+# WordPress as RPM from https://avi.alkalay.net/2016/01/wordpress-fedora-rpm.html
 
 RUN yum -y install epel-release;\
 	yum -y install wordpress;\
