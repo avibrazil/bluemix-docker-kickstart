@@ -279,7 +279,7 @@ stages:
     value: ${CF_APP}
     type: text
   - name: ROUTE_HOSTNAME
-    value: ${CF_APP}-wordpress
+    value: ${CONTAINER_PREFIX}-wordpress
     type: text
   - name: DESIRED_INSTANCES
     value: 2
