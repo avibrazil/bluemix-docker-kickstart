@@ -3,11 +3,17 @@ MAINTAINER Avi Alkalay <avi at unix.sh>
 
 # WordPress as RPM from https://avi.alkalay.net/2016/01/wordpress-fedora-rpm.html
 
+ADD wordpress.conf.patch /tmp
+
 RUN yum -y install epel-release;\
-	yum -y install wordpress;\
+	yum -y install wordpress patch;\
 	yum clean all;\
-	sed -i 's/Require local/Require all granted/' /etc/httpd/conf.d/wordpress.conf;\
-	sed -i 's/database_name_here/${VCAP_SERVICES_CLEARDB_0_CREDENTIALS_NAME}/; s/username_here/${VCAP_SERVICES_CLEARDB_0_CREDENTIALS_USERNAME}/; s/password_here/${VCAP_SERVICES_CLEARDB_0_CREDENTIALS_PASSWORD}/; s/localhost/${VCAP_SERVICES_CLEARDB_0_CREDENTIALS_HOSTNAME}/' /etc/wordpress/wp-config.php
+	sed -i 's/.localhost./$_ENV["VCAP_SERVICES_CLEARDB_0_CREDENTIALS_HOSTNAME"]/' /etc/wordpress/wp-config.php;\
+	sed -i 's/.database_name_here./$_ENV["VCAP_SERVICES_CLEARDB_0_CREDENTIALS_NAME"]/' /etc/wordpress/wp-config.php;\
+	sed -i 's/.username_here./$_ENV["VCAP_SERVICES_CLEARDB_0_CREDENTIALS_USERNAME"]/' /etc/wordpress/wp-config.php;\
+	sed -i 's/.password_here./$_ENV["VCAP_SERVICES_CLEARDB_0_CREDENTIALS_PASSWORD"]/' /etc/wordpress/wp-config.php;\
+	cd /etc/httpd/conf.d; patch < /tmp/wordpress.conf.patch;\
+	rm /tmp/wordpress.conf.patch
 
 
 
