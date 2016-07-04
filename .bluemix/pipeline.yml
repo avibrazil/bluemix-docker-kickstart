@@ -22,7 +22,7 @@ stages:
   - type: git
     branch: master
   triggers:
-  - type: commit
+  - type: stage
   jobs:
   - name: Build phpinfo container
     type: builder
@@ -107,7 +107,7 @@ stages:
     value: ${CF_APP}
     type: text
   - name: ROUTE_HOSTNAME
-    value: ${CONTAINER_PREFIX}-phpinfo
+    value: ${CF_APP}-phpinfo
     type: text
   jobs:
   - name: Deploy phpinfo container
@@ -119,7 +119,7 @@ stages:
     SETUP_SERVICE_SPACE: 'true'
     extension_id: ibm.devops.services.pipeline.docker.deploy.ice
     PORT: 80
-    CONTAINER_NAME: ${CF_APP}-phpinfo
+    CONTAINER_NAME: ${CONTAINER_PREFIX}-phpinfo
     DEPLOY_TYPE: red_black
     COMMAND: |
         #!/bin/bash
@@ -197,7 +197,7 @@ stages:
   - type: git
     branch: master
   triggers:
-  - type: commit
+  - type: stage
   jobs:
   - name: Build wordpress container
     type: builder
