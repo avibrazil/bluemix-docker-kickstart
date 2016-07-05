@@ -2,7 +2,7 @@ applications:
 - path: bridge-app
   buildpack: noop-buildpack
   name: A bridge app with Bluemix components to support a solution with containers
-  host: the-bridge-app-host-name
+  host: the-bridge-app-useless-host-name
   no-hostname: true
   no-route: true
   domain: mybluemix.net
@@ -14,7 +14,7 @@ applications:
 declared-services:
   # declared-services block is ignored by `cf push`, but is used by
   # Bluemix DevOps Services to automatically provision things.
-  # Names of services and plans came from `cf marketplace` command.
+  # Discover name of services and plans using `cf marketplace` command.
   bridge-app-database:
     label: cleardb
     plan: spark

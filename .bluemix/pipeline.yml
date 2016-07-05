@@ -1,6 +1,6 @@
 ---
 stages:
-- name: Deploy CF bridge app
+- name: ➊ Deploy CF bridge app
   inputs:
   - type: git
     branch: master
@@ -17,7 +17,7 @@ stages:
     script: |-
       #!/bin/sh
       cf push
-- name: Build phpinfo Container
+- name: ➋ Build phpinfo Container
   inputs:
   - type: git
     branch: master
@@ -92,10 +92,10 @@ stages:
         # Copy any artifacts that will be needed for deployment and testing to $WORKSPACE    #
         ######################################################################################
         echo "IMAGE_NAME=${FULL_REPOSITORY_NAME}" >> $ARCHIVE_DIR/build.properties
-- name: Deploy phpinfo Container
+- name: ➌ Deploy phpinfo Container
   inputs:
   - type: job
-    stage: Build phpinfo Container
+    stage: ➋ Build phpinfo Container
     job: Build phpinfo container
   triggers:
   - type: stage
@@ -189,7 +189,7 @@ stages:
             exit $RESULT
         fi
         echo -e "${green}Execution complete${no_label}"
-- name: Build wordpress Container
+- name: ➍ Build wordpress Container
   inputs:
   - type: git
     branch: master
@@ -264,10 +264,10 @@ stages:
         # Copy any artifacts that will be needed for deployment and testing to $WORKSPACE    #
         ######################################################################################
         echo "IMAGE_NAME=${FULL_REPOSITORY_NAME}" >> $ARCHIVE_DIR/build.properties
-- name: Deploy wordpress Container Group
+- name: ➎ Deploy wordpress Container Group
   inputs:
   - type: job
-    stage: Build wordpress Container
+    stage: ➍ Build wordpress Container
     job: Build wordpress container
   triggers:
   - type: stage
