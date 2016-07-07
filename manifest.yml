@@ -1,3 +1,6 @@
+# manifest.yml by Avi Alkalay <avi at unix.sh> – https://Avi.Alkalay.net/
+# Freely distributable
+
 applications:
 - path: bridge-app
   buildpack: noop-buildpack
@@ -8,6 +11,9 @@ applications:
   domain: mybluemix.net
   disk-quota: 128K
   memory: 1M
+  env:
+    EXAMPLE_ENV_1: value1
+    EXAMPLE_ENV_2: value2
   services:
   - bridge-app-database
   - bridge-app-object-store
@@ -21,3 +27,4 @@ declared-services:
   bridge-app-object-store:
     label: Object-Storage
     plan: Free
+
