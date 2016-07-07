@@ -1,3 +1,5 @@
+# pipeline.yml by Avi Alkalay <avi at unix.sh> – https://Avi.Alkalay.net/
+# Freely distributable
 ---
 stages:
 - name: ➊ Deploy CF bridge app
