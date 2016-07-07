@@ -1,0 +1,36 @@
+#!/bin/sh
+
+SPACE="dev"
+
+
+## Begin of bridge app creation block
+
+cf target -s $SPACE
+
+cf create-service \
+	cleardb \
+	spark \
+	bridge-app-database
+
+cf create-service \
+	Object-Storage \
+	Free \
+	bridge-app-object-store
+	
+cf push
+
+## End of bridge app creation block
+
+
+
+
+
+
+
+
+## Begin of phpinfo() docker image creation block
+
+
+
+
+## End of phpinfo() docker image creation block
