@@ -13,3 +13,7 @@ EXPOSE 80
 
 # This container is a web server serving PHP apps, so a plain Apache is our entry point
 ENTRYPOINT [ "/usr/sbin/httpd", "-DFOREGROUND" ]
+
+
+# Dockerfile by Avi Alkalay <avi at unix.sh> – https://Avi.Alkalay.net/
+# Freely distributable
