@@ -5,22 +5,22 @@ DOMAIN="mybluemix.net"
 
 ## Begin: bridge app creation and startup
 
-cf target -s $SPACE
+cf target -s $SPACE;
 
 
 cf create-service \
 	cleardb \
 	spark \
-	bridge-app-database
+	bridge-app-database;
 
 
 cf create-service \
 	Object-Storage \
 	Free \
-	bridge-app-object-store
+	bridge-app-object-store;
 
 	
-cf push
+cf push;
 
 ## End: bridge app creation and startup
 

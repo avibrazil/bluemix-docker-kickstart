@@ -2,13 +2,13 @@
 # Freely distributable
 
 applications:
-- path: bridge-app
+- name: bridge-app-name
 
   buildpack: noop-buildpack
-  name: bridge-app-name
   memory: 1M
   disk-quota: 128K
 
+  path: bridge-app
   no-hostname: true
   no-route: true
 
