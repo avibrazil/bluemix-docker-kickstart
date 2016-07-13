@@ -3,7 +3,7 @@ MAINTAINER Avi Alkalay <avi at unix.sh>
 
 # WordPress as RPM from https://avi.alkalay.net/2016/01/wordpress-fedora-rpm.html
 
-ADD *.patch /tmp
+ADD *.patch /tmp/
 COPY index.html /var/www/html/
 
 RUN yum -y install epel-release;\
