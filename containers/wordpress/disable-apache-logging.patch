@@ -1,0 +1,20 @@
+--- httpd.conf.org	2016-07-13 03:47:54.650587294 +0000
++++ httpd.conf	2016-07-13 03:47:24.374026433 +0000
+@@ -481,7 +481,7 @@
+ # logged here.  If you *do* define an error logfile for a <VirtualHost>
+ # container, that host's errors will be logged there and not here.
+ #
+-ErrorLog logs/error_log
++#ErrorLog logs/error_log
+
+ #
+ # LogLevel: Control the number of messages logged to the error_log.
+@@ -510,7 +510,7 @@
+ # define per-<VirtualHost> access logfiles, transactions will be
+ # logged therein and *not* in this file.
+ #
+-CustomLog logs/access_log common
++#CustomLog logs/access_log common
+
+ #
+ # If you would like to have separate agent and referer logfiles, uncomment

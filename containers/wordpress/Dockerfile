@@ -3,7 +3,7 @@ MAINTAINER Avi Alkalay <avi at unix.sh>
 
 # WordPress as RPM from https://avi.alkalay.net/2016/01/wordpress-fedora-rpm.html
 
-ADD wordpress.conf.patch /tmp
+ADD *.patch /tmp
 
 RUN yum -y install epel-release;\
 	yum -y install wordpress patch;\
@@ -14,8 +14,9 @@ RUN yum -y install epel-release;\
 		     s/.username_here./getenv("VCAP_SERVICES_CLEARDB_0_CREDENTIALS_USERNAME")/ ; \
 		     s/.password_here./getenv("VCAP_SERVICES_CLEARDB_0_CREDENTIALS_PASSWORD")/ ; \
 	' /etc/wordpress/wp-config.php;\
-	cd /etc/httpd/conf.d; patch < /tmp/wordpress.conf.patch;\
-	rm /tmp/wordpress.conf.patch
+	cd /etc/httpd/conf.d; patch < /tmp/open-apache-server.patch;\
+	cd /etc/httpd/conf.d; patch < /tmp/open-apache-server.patch;\
+	rm /tmp/*.patch
 
 
 
